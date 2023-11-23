@@ -1,8 +1,8 @@
 <h1>Your list</h1>
 <% @bookmarks.each do |bookmark|%>
 <%# to be implemented %>
-<p>The title of the movie is<%=bookmark.movie.title%> and the rating is <%=bookmark.movie.rating%></p>
+<p>The title of the movie is <%=bookmark.movie.title%> and the rating is <%=bookmark.movie.rating%></p>
 <p>Your comment is <%= bookmark.comment%></p>
 <%end%>
-
+<%= link_to "add a bookmark", new_list_bookmark_path(@list)%>
 <%= link_to "back to all lists", lists_path%>
