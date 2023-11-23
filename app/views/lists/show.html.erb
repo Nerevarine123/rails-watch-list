@@ -3,6 +3,9 @@
 <%# to be implemented %>
 <p>The title of the movie is <%=bookmark.movie.title%> and the rating is <%=bookmark.movie.rating%></p>
 <p>Your comment is <%= bookmark.comment%></p>
+<%= link_to "remove bookmark", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "are you sure you want to YEET your bookmark" }%>
 <%end%>
+<div>
 <%= link_to "add a bookmark", new_list_bookmark_path(@list)%>
+</div>
 <%= link_to "back to all lists", lists_path%>
