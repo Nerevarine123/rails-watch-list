@@ -1,26 +1,26 @@
 <h1>Your list</h1>
 <% @bookmarks.each do |bookmark|%>
-<%# to be implemented %>
-<p>The title of the movie is <%=bookmark.movie.title%> and the rating is <%=bookmark.movie.rating%></p>
-<p>Your comment is <%= bookmark.comment%></p>
-<%= link_to "remove bookmark", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "are you sure you want to YEET your bookmark" }%>
+  <p>The title of the movie is <%=bookmark.movie.title%> and the rating is <%=bookmark.movie.rating%></p>
+  <p>Your comment is <%= bookmark.comment%></p>
+  <%= link_to "remove bookmark", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "are you sure you want to YEET your bookmark" }%>
 <%end%>
 <div>
-<%= link_to "add a bookmark", new_list_bookmark_path(@list)%>
+  <%= link_to "add a bookmark", new_list_bookmark_path(@list)%>
 </div>
 <%= link_to "back to all lists", lists_path%>
-
-
+<div>
+  <%=link_to "remove list", list_path(@list), data: { turbo_method: :delete, turbo_confirm: "are you sure you want to YEET your list" }%>
+</div>
 <h2>Add a review for this list</h2>
 <%= simple_form_for [@list, @review] do |f| %>
-<%= f.input :comment%>
-<%= f.input :rating%>
-<%= f.submit 'Add Review'%>
+  <%= f.input :comment%>
+  <%= f.input :rating%>
+  <%= f.submit 'Add Review'%>
 <%end%>
 <div>
 <h3>All reviews</h3>
 <% @list.reviews.each do |review|%>
-<p><%= review.comment%> and the rating is <%= "⭐" * review.rating%></p>
-<%= link_to "remove review", review_path(review), data: { turbo_method: :delete, turbo_confirm: "are you sure you want to YEET your review" }%>
+  <p><%= review.comment%> and the rating is <%= "⭐" * review.rating%></p>
+  <%= link_to "remove review", review_path(review), data: { turbo_method: :delete, turbo_confirm: "are you sure you want to YEET your review" }%>
 <%end%>
 </div>
