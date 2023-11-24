@@ -9,3 +9,18 @@
 <%= link_to "add a bookmark", new_list_bookmark_path(@list)%>
 </div>
 <%= link_to "back to all lists", lists_path%>
+
+
+<h2>Add a review for this list</h2>
+<%= simple_form_for [@list, @review] do |f| %>
+<%= f.input :comment%>
+<%= f.input :rating%>
+<%= f.submit 'Add Review'%>
+<%end%>
+<div>
+<h3>All reviews</h3>
+<% @list.reviews.each do |review|%>
+<p><%= review.comment%> and the rating is <%= "⭐" * review.rating%></p>
+<%= link_to "remove review", review_path(review), data: { turbo_method: :delete, turbo_confirm: "are you sure you want to YEET your review" }%>
+<%end%>
+</div>
